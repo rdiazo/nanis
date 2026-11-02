@@ -1,0 +1,97 @@
+/* ==========================================================================
+   DESIGN TOKENS — Nani's
+   Único lugar donde se definen colores, tipografía, radios y sombras.
+   Para cambiar la identidad de marca, edita solo este archivo.
+   ========================================================================== */
+
+:root {
+  /* --- Tipografía --- */
+  --font-display: "Montserrat", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-lg: 1.125rem;
+  --fs-xl: 1.375rem;
+  --fs-2xl: clamp(1.6rem, 1.2rem + 1.8vw, 2.4rem);
+  --fs-hero: clamp(2.3rem, 1.4rem + 4.6vw, 4.6rem);
+
+  /* --- Espaciado / layout --- */
+  --gutter: 16px;
+  --container: 1240px;
+  --header-h: 64px;
+  --section-y: clamp(3rem, 2rem + 4vw, 6rem);
+
+  /* --- Radios y sombras --- */
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+
+  /* --- Movimiento --- */
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --dur: 240ms;
+
+  /* --- Paleta CLARA (por defecto) --- */
+  --bg: #FBF8F5;            /* crema */
+  --surface: #FFFFFF;
+  --surface-2: #F4ECE5;     /* nude */
+  --text: #2B2421;
+  --muted: #7A6D66;
+  --border: #EADFD6;
+
+  --primary: #E07A6E;       /* coral pastel (CTA) */
+  --primary-hover: #CF685C;
+  --primary-ink: #FFFFFF;
+  --primary-soft: #FBE4DF;
+
+  --accent: #6FBFA4;        /* verde menta */
+  --accent-soft: #E1F3EC;
+
+  --dark: #2B2421;          /* botones secundarios */
+  --dark-ink: #FBF8F5;
+
+  --star: #F2B544;
+  --danger: #D1495B;
+  --success: #3E9C7E;
+
+  --overlay: rgba(32, 24, 20, .45);
+  --shadow-sm: 0 1px 2px rgba(43, 36, 33, .06), 0 2px 8px rgba(43, 36, 33, .05);
+  --shadow: 0 10px 30px -10px rgba(43, 36, 33, .18);
+  --shadow-lg: 0 24px 60px -12px rgba(43, 36, 33, .28);
+
+  color-scheme: light;
+}
+
+/* --- Paleta OSCURA --- */
+:root[data-theme="dark"] {
+  --bg: #151211;
+  --surface: #1E1A18;
+  --surface-2: #2A2420;
+  --text: #F5EEE9;
+  --muted: #B0A39B;
+  --border: #3A322D;
+
+  --primary: #F0948A;
+  --primary-hover: #F6AAA1;
+  --primary-ink: #221815;
+  --primary-soft: #3A2622;
+
+  --accent: #7FCDB1;
+  --accent-soft: #1C302A;
+
+  --dark: #F5EEE9;
+  --dark-ink: #1E1A18;
+
+  --overlay: rgba(0, 0, 0, .6);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, .3);
+  --shadow: 0 10px 30px -10px rgba(0, 0, 0, .55);
+  --shadow-lg: 0 24px 60px -12px rgba(0, 0, 0, .7);
+
+  color-scheme: dark;
+}
+
+@media (min-width: 1024px) {
+  :root { --gutter: 32px; --header-h: 76px; }
+}

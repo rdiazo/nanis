@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nani's | Fitness &amp; Swimwear</title>
+  <meta name="description" content="Ropa deportiva y trajes de baño para entrenar con estilo y lucir increíble. Envíos a todo el país.">
+  <meta name="theme-color" content="#FBF8F5">
+
+  <!-- Aplica el tema antes de pintar para evitar el parpadeo claro→oscuro -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('nanis-theme');
+        if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = t;
+      } catch (e) { document.documentElement.dataset.theme = 'light'; }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+  <!-- =========================================================
+       SPRITE DE ICONOS (uso: <svg><use href="#i-cart"/></svg>)
+       ========================================================= -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-cart" viewBox="0 0 24 24"><path d="M6 7h12l-1 13H7L6 7Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 7a3 3 0 0 1 6 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor"/></symbol>
+    <symbol id="i-tiktok" viewBox="0 0 24 24"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M14 3c.4 2.6 2.2 4.4 5 4.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M14 8h2.5V4.5H14A4 4 0 0 0 10 8.5V11H7.5v3.5H10V21h3.5v-6.5H16l.5-3.5h-3V9a1 1 0 0 1 1-1Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19l-4 1Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 9.2c0 3 2.6 5.8 5.8 5.8l1-1.3-1.8-1-1 .7a4 4 0 0 1-2.4-2.4l.7-1-1-1.8L9 9.2Z" fill="currentColor"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-truck" viewBox="0 0 24 24"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="7" cy="17.5" r="1.8" fill="var(--surface)" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="17.5" r="1.8" fill="var(--surface)" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.5 3 8.4 7 10 4-1.6 7-5.5 7-10V6l-7-3Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3ZM18.5 15.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8.8-2.2Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-return" viewBox="0 0 24 24"><path d="M4 9h11a5 5 0 0 1 0 10H8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 5 4 9l4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M5 7h14M10 7V4h4v3M7 7l1 13h8l1-13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-tag" viewBox="0 0 24 24"><path d="M3 12V4h8l10 10-8 8L3 12Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="7.5" cy="8.5" r="1.4" fill="currentColor"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <!-- =========================================================
+       1. BARRA DE ANUNCIO
+       ========================================================= -->
+  <div class="announcement" role="note">
+    <p>Envío <strong>GRATIS</strong> desde <span data-free-shipping>$60</span> · Usa <strong>BIENVENIDA10</strong> en tu primera compra</p>
+  </div>
+
+  <!-- =========================================================
+       2. HEADER
+       ========================================================= -->
+  <header class="site-header" id="site-header">
+    <div class="container site-header__bar">
+      <button class="icon-btn site-header__menu-btn" id="menu-open" aria-label="Abrir menú" aria-controls="mobile-nav" aria-expanded="false">
+        <svg><use href="#i-menu"/></svg>
+      </button>
+
+      <a href="#" class="logo" aria-label="Nani's — inicio">
+        <span class="logo__mark">Nani's</span>
+        <span class="logo__tag">Fitness &amp; Swimwear</span>
+      </a>
+
+      <!-- Menú principal (desktop). data-filter conecta cada enlace con el catálogo -->
+      <nav class="main-nav" aria-label="Principal">
+        <ul class="main-nav__list">
+          <li><a href="#catalogo" data-filter="audience:mujer">Mujer</a></li>
+          <li><a href="#catalogo" data-filter="audience:hombre">Hombre</a></li>
+          <li><a href="#catalogo" data-filter="audience:ninos">Niños</a></li>
+          <li><a href="#catalogo" data-filter="line:fitness">Deporte</a></li>
+          <li><a href="#catalogo" data-filter="tag:sale" class="main-nav__outlet">Outlet</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions">
+        <button class="icon-btn" id="search-toggle" aria-label="Buscar" aria-controls="search-panel" aria-expanded="false">
+          <svg><use href="#i-search"/></svg>
+        </button>
+        <button class="icon-btn hide-mobile" data-theme-toggle aria-label="Cambiar tema claro/oscuro">
+          <svg class="theme-icon theme-icon--sun"><use href="#i-sun"/></svg>
+          <svg class="theme-icon theme-icon--moon"><use href="#i-moon"/></svg>
+        </button>
+        <a class="icon-btn hide-mobile" data-social="instagram" href="#" target="_blank" rel="noopener" aria-label="Instagram @cositas_nanis">
+          <svg><use href="#i-instagram"/></svg>
+        </a>
+        <a class="icon-btn hide-mobile" data-social="tiktok" href="#" target="_blank" rel="noopener" aria-label="TikTok @cositas_nanis">
+          <svg><use href="#i-tiktok"/></svg>
+        </a>
+        <button class="icon-btn cart-btn" id="cart-open" aria-label="Abrir carrito" aria-controls="cart-drawer" aria-expanded="false">
+          <svg><use href="#i-cart"/></svg>
+          <span class="cart-btn__count" data-cart-count aria-live="polite">0</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Búsqueda desplegable: filtra el catálogo en vivo -->
+    <div class="search-panel" id="search-panel" hidden>
+      <form class="container search-panel__form" role="search" id="search-form">
+        <label for="search-input" class="sr-only">Buscar productos</label>
+        <svg class="search-panel__icon"><use href="#i-search"/></svg>
+        <input type="search" id="search-input" placeholder="Busca leggings, bikinis, tops…" autocomplete="off">
+        <p class="search-panel__meta" id="search-meta" aria-live="polite"></p>
+      </form>
+    </div>
+  </header>
+
+  <!-- Menú móvil (off-canvas izquierda) -->
+  <div class="overlay" id="nav-overlay" hidden></div>
+  <aside class="mobile-nav" id="mobile-nav" aria-label="Menú" aria-hidden="true">
+    <div class="mobile-nav__head">
+      <span class="logo__mark">Nani's</span>
+      <button class="icon-btn" id="menu-close" aria-label="Cerrar menú"><svg><use href="#i-close"/></svg></button>
+    </div>
+    <ul class="mobile-nav__list">
+      <li><a href="#catalogo" data-filter="audience:mujer">Mujer</a></li>
+      <li><a href="#catalogo" data-filter="audience:hombre">Hombre</a></li>
+      <li><a href="#catalogo" data-filter="audience:ninos">Niños</a></li>
+      <li><a href="#catalogo" data-filter="line:fitness">Deporte</a></li>
+      <li><a href="#catalogo" data-filter="line:swimwear">Swimwear</a></li>
+      <li><a href="#catalogo" data-filter="tag:sale" class="main-nav__outlet">Outlet</a></li>
+    </ul>
+    <div class="mobile-nav__foot">
+      <button class="btn btn--ghost btn--block" data-theme-toggle>
+        <svg class="theme-icon theme-icon--sun"><use href="#i-sun"/></svg>
+        <svg class="theme-icon theme-icon--moon"><use href="#i-moon"/></svg>
+        <span>Cambiar tema</span>
+      </button>
+      <div class="social-row">
+        <a class="icon-btn" data-social="instagram" href="#" target="_blank" rel="noopener" aria-label="Instagram"><svg><use href="#i-instagram"/></svg></a>
+        <a class="icon-btn" data-social="tiktok" href="#" target="_blank" rel="noopener" aria-label="TikTok"><svg><use href="#i-tiktok"/></svg></a>
+        <a class="icon-btn" data-social="facebook" href="#" target="_blank" rel="noopener" aria-label="Facebook"><svg><use href="#i-facebook"/></svg></a>
+      </div>
+    </div>
+  </aside>
+
+  <main id="main">
+
+    <!-- =========================================================
+         3. HERO
+         ========================================================= -->
+    <section class="hero" aria-labelledby="hero-title">
+      <img class="hero__bg"
+           src="https://images.unsplash.com/photo-1518310383802-640c2de311b2?auto=format&fit=crop&w=1920&q=80"
+           alt="" fetchpriority="high">
+      <div class="container hero__content">
+        <p class="eyebrow eyebrow--light">Nueva colección · Verano 2026</p>
+        <h1 id="hero-title" class="hero__title">Entrena con estilo,<br><em>luce increíble.</em></h1>
+        <p class="hero__subtitle">Prendas que se mueven contigo: telas suaves, ajuste que estiliza y diseños para el gym, la playa y todo lo que viene después.</p>
+        <div class="hero__ctas">
+          <a href="#catalogo" class="btn btn--primary btn--lg" data-filter="reset">Ver Colección <svg><use href="#i-arrow"/></svg></a>
+          <a href="#catalogo" class="btn btn--glass btn--lg" data-filter="line:swimwear">Swimwear</a>
+        </div>
+        <!-- TODO: reemplazar por métricas reales de la marca -->
+        <ul class="hero__proof">
+          <li><svg class="star"><use href="#i-star"/></svg> 4.9 de valoración</li>
+          <li>+2.000 clientas felices</li>
+          <li>Envíos a todo el país</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         4. CATEGORÍAS DESTACADAS
+         ========================================================= -->
+    <section class="section" aria-labelledby="cats-title">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow">Encuentra lo tuyo</p>
+          <h2 id="cats-title" class="section__title">Dos mundos, un mismo estilo</h2>
+        </header>
+        <div class="category-grid">
+          <a href="#catalogo" class="category-card" data-filter="line:fitness">
+            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1000&q=80" alt="Mujer entrenando con conjunto deportivo" loading="lazy" class="js-img">
+            <div class="category-card__body">
+              <span class="category-card__kicker">Gym · Yoga · Running</span>
+              <h3 class="category-card__title">Fitness</h3>
+              <span class="category-card__cta">Comprar ahora <svg><use href="#i-arrow"/></svg></span>
+            </div>
+          </a>
+          <a href="#catalogo" class="category-card" data-filter="line:swimwear">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80" alt="Playa de aguas turquesa" loading="lazy" class="js-img">
+            <div class="category-card__body">
+              <span class="category-card__kicker">Bikinis · Enterizos · Salidas</span>
+              <h3 class="category-card__title">Swimwear</h3>
+              <span class="category-card__cta">Comprar ahora <svg><use href="#i-arrow"/></svg></span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         5. CATÁLOGO (render dinámico: js/ui/catalog.js)
+         ========================================================= -->
+    <section class="section section--tinted" id="catalogo" aria-labelledby="catalog-title">
+      <div class="container">
+        <header class="section__head section__head--row">
+          <div>
+            <p class="eyebrow">Tienda</p>
+            <h2 id="catalog-title" class="section__title">Nuestra colección</h2>
+          </div>
+          <p class="catalog__count" id="catalog-count" aria-live="polite"></p>
+        </header>
+
+        <div class="filters" role="toolbar" aria-label="Filtros del catálogo">
+          <div class="chips" id="tag-filters">
+            <button class="chip is-active" data-tag="all" aria-pressed="true">Todos</button>
+            <button class="chip" data-tag="bestseller" aria-pressed="false">Lo más vendido</button>
+            <button class="chip" data-tag="new" aria-pressed="false">Nuevos ingresos</button>
+            <button class="chip" data-tag="sale" aria-pressed="false">Ofertas</button>
+          </div>
+          <div class="filters__selects">
+            <label class="select">
+              <span class="sr-only">Línea</span>
+              <select id="line-filter">
+                <option value="all">Todas las líneas</option>
+                <option value="fitness">Fitness</option>
+                <option value="swimwear">Swimwear</option>
+              </select>
+            </label>
+            <label class="select">
+              <span class="sr-only">Ordenar</span>
+              <select id="sort-filter">
+                <option value="relevance">Destacados</option>
+                <option value="price-asc">Precio: menor a mayor</option>
+                <option value="price-desc">Precio: mayor a menor</option>
+                <option value="rating">Mejor valorados</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <!-- Filtros activos (público / búsqueda) con botón para quitarlos -->
+        <div class="active-filters" id="active-filters"></div>
+
+        <div class="product-grid" id="product-grid" aria-live="polite"></div>
+
+        <div class="empty-state" id="catalog-empty" hidden>
+          <p>No encontramos productos con esos filtros.</p>
+          <button class="btn btn--ghost" data-filter="reset">Ver todo el catálogo</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         6. BENEFICIOS
+         ========================================================= -->
+    <section class="benefits" aria-label="Beneficios">
+      <div class="container benefits__grid">
+        <div class="benefit">
+          <svg><use href="#i-truck"/></svg>
+          <div><h3>Envíos a todo el país</h3><p>Gratis desde <span data-free-shipping>$60</span>. Recibe en 24–72 h.</p></div>
+        </div>
+        <div class="benefit">
+          <svg><use href="#i-shield"/></svg>
+          <div><h3>Pagos seguros</h3><p>Zelle, PayPal, tarjetas y transferencias.</p></div>
+        </div>
+        <div class="benefit">
+          <svg><use href="#i-sparkle"/></svg>
+          <div><h3>Calidad garantizada</h3><p>Telas premium que no transparentan.</p></div>
+        </div>
+        <div class="benefit">
+          <svg><use href="#i-return"/></svg>
+          <div><h3>Cambios fáciles</h3><p>¿No era tu talla? La cambiamos en 7 días.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         7. TESTIMONIOS — TODO: sustituir por reseñas reales
+         ========================================================= -->
+    <section class="section" aria-labelledby="reviews-title">
+      <div class="container">
+        <header class="section__head">
+          <p class="eyebrow">Lo que dicen ellas</p>
+          <h2 id="reviews-title" class="section__title">Clientas que ya entrenan con Nani's</h2>
+        </header>
+        <div class="testimonials">
+          <figure class="testimonial">
+            <div class="stars" aria-label="5 de 5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+            <blockquote>"El legging no transparenta nada y me levanta muchísimo. Ya voy por el tercero."</blockquote>
+            <figcaption><strong>Andrea M.</strong> · Clienta verificada</figcaption>
+          </figure>
+          <figure class="testimonial">
+            <div class="stars" aria-label="5 de 5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+            <blockquote>"Pedí el bikini por WhatsApp y me llegó en dos días. La atención es un amor."</blockquote>
+            <figcaption><strong>Valeria R.</strong> · Clienta verificada</figcaption>
+          </figure>
+          <figure class="testimonial">
+            <div class="stars" aria-label="5 de 5 estrellas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+            <blockquote>"Me ayudaron a elegir la talla y quedó perfecto. Calidad que se nota."</blockquote>
+            <figcaption><strong>Daniela P.</strong> · Clienta verificada</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         8. COMUNIDAD INSTAGRAM
+         ========================================================= -->
+    <section class="section section--tinted community" aria-labelledby="community-title">
+      <div class="container community__inner">
+        <div class="community__text">
+          <p class="eyebrow">Comunidad</p>
+          <h2 id="community-title" class="section__title">Únete a <span class="text-primary">@cositas_nanis</span></h2>
+          <p class="muted">Lanzamientos, outfits de clientas, sorteos y tips de entrenamiento todas las semanas.</p>
+          <div class="community__ctas">
+            <a class="btn btn--primary" data-social="instagram" href="#" target="_blank" rel="noopener"><svg><use href="#i-instagram"/></svg> Seguir en Instagram</a>
+            <a class="btn btn--ghost" data-social="tiktok" href="#" target="_blank" rel="noopener"><svg><use href="#i-tiktok"/></svg> TikTok</a>
+          </div>
+        </div>
+        <div class="community__mosaic" id="community-mosaic" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         9. PREGUNTAS FRECUENTES (acordeón nativo <details>)
+         ========================================================= -->
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <div class="container container--narrow">
+        <header class="section__head">
+          <p class="eyebrow">Ayuda</p>
+          <h2 id="faq-title" class="section__title">Preguntas frecuentes</h2>
+        </header>
+        <div class="faq">
+          <details class="faq__item" open>
+            <summary>¿Cómo sé cuál es mi talla?</summary>
+            <p>Cada prenda tiene tallas de XS a XL. Si estás entre dos tallas, te recomendamos la mayor para leggings y la menor para trajes de baño. Escríbenos por WhatsApp con tus medidas y te asesoramos.</p>
+          </details>
+          <details class="faq__item">
+            <summary>¿Qué métodos de pago aceptan?</summary>
+            <p>Zelle, PayPal, tarjetas Visa y Mastercard, transferencias bancarias y Pago Móvil. Al confirmar tu pedido te enviamos los datos de pago.</p>
+          </details>
+          <details class="faq__item">
+            <summary>¿Cuánto tarda el envío?</summary>
+            <p>Despachamos en 24 h hábiles. La entrega toma entre 24 y 72 h según tu ciudad. El envío es gratis en compras desde <span data-free-shipping>$60</span>.</p>
+          </details>
+          <details class="faq__item">
+            <summary>¿Puedo cambiar un producto?</summary>
+            <p>Sí, tienes 7 días para cambios de talla o modelo, siempre que la prenda esté sin uso y con etiquetas. Por higiene, los trajes de baño solo se cambian con el protector intacto.</p>
+          </details>
+          <details class="faq__item">
+            <summary>¿Cómo cuido mis prendas?</summary>
+            <p>Lava a mano o en ciclo delicado con agua fría, sin suavizante y seca a la sombra. Así el tejido conserva su compresión y color.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================
+       10. FOOTER
+       ========================================================= -->
+  <footer class="site-footer">
+    <div class="container site-footer__grid">
+      <div class="site-footer__brand">
+        <span class="logo__mark logo__mark--lg">Nani's</span>
+        <p>Ropa deportiva y trajes de baño pensados para mujeres reales: cómodos, favorecedores y hechos para moverse contigo, del gym a la playa.</p>
+        <div class="social-row">
+          <a class="icon-btn" data-social="instagram" href="#" target="_blank" rel="noopener" aria-label="Instagram"><svg><use href="#i-instagram"/></svg></a>
+          <a class="icon-btn" data-social="tiktok" href="#" target="_blank" rel="noopener" aria-label="TikTok"><svg><use href="#i-tiktok"/></svg></a>
+          <a class="icon-btn" data-social="facebook" href="#" target="_blank" rel="noopener" aria-label="Facebook"><svg><use href="#i-facebook"/></svg></a>
+        </div>
+      </div>
+
+      <nav class="site-footer__col" aria-label="Tienda">
+        <h3>Tienda</h3>
+        <ul>
+          <li><a href="#catalogo" data-filter="audience:mujer">Mujer</a></li>
+          <li><a href="#catalogo" data-filter="audience:hombre">Hombre</a></li>
+          <li><a href="#catalogo" data-filter="audience:ninos">Niños</a></li>
+          <li><a href="#catalogo" data-filter="tag:sale">Outlet</a></li>
+        </ul>
+      </nav>
+
+      <nav class="site-footer__col" aria-label="Ayuda">
+        <h3>Ayuda</h3>
+        <!-- TODO: enlazar a las páginas legales cuando existan -->
+        <ul>
+          <li><a href="#">Políticas de privacidad</a></li>
+          <li><a href="#">Envíos y entregas</a></li>
+          <li><a href="#">Cambios y devoluciones</a></li>
+          <li><a href="#">Términos y condiciones</a></li>
+          <li><a href="#faq">Preguntas frecuentes</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-footer__col">
+        <h3>Contacto</h3>
+        <ul class="contact-list">
+          <li><svg><use href="#i-whatsapp"/></svg><a data-contact="whatsapp" href="#" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><svg><use href="#i-mail"/></svg><a data-contact="email" href="#">email</a></li>
+          <li><svg><use href="#i-clock"/></svg><span data-contact="hours">Horario</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container site-footer__payments">
+      <p class="muted small">Métodos de pago aceptados</p>
+      <ul class="payments" aria-label="Métodos de pago">
+        <li class="pay pay--visa">VISA</li>
+        <li class="pay pay--mc"><span></span><span></span><em class="sr-only">Mastercard</em></li>
+        <li class="pay pay--paypal"><b>Pay</b>Pal</li>
+        <li class="pay pay--zelle">Zelle</li>
+        <li class="pay">Transferencia</li>
+        <li class="pay">Pago Móvil</li>
+      </ul>
+    </div>
+
+    <div class="container site-footer__bottom">
+      <p class="small muted">© <span data-year>2026</span> Nani's | Fitness &amp; Swimwear. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp flotante -->
+  <a class="wa-float" data-contact="whatsapp" href="#" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+    <svg><use href="#i-whatsapp"/></svg>
+  </a>
+
+  <!-- =========================================================
+       11. CARRITO (slide-over) — render: js/ui/cart-drawer.js
+       ========================================================= -->
+  <div class="overlay" id="cart-overlay" hidden></div>
+  <aside class="cart-drawer" id="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cart-title" aria-hidden="true">
+    <header class="cart-drawer__head">
+      <h2 id="cart-title">Tu carrito <span class="muted" data-cart-count-label></span></h2>
+      <button class="icon-btn" id="cart-close" aria-label="Cerrar carrito"><svg><use href="#i-close"/></svg></button>
+    </header>
+
+    <div class="shipping-progress" id="shipping-progress">
+      <p class="shipping-progress__text" id="shipping-progress-text"></p>
+      <div class="shipping-progress__bar"><span id="shipping-progress-fill"></span></div>
+    </div>
+
+    <div class="cart-drawer__body">
+      <ul class="cart-items" id="cart-items"></ul>
+      <div class="cart-empty" id="cart-empty" hidden>
+        <svg><use href="#i-cart"/></svg>
+        <p><strong>Tu carrito está vacío</strong></p>
+        <p class="muted small">Descubre leggings, tops y bikinis que te van a encantar.</p>
+        <a href="#catalogo" class="btn btn--primary" data-cart-dismiss>Ver colección</a>
+      </div>
+    </div>
+
+    <footer class="cart-drawer__foot" id="cart-foot">
+      <form class="coupon" id="coupon-form" novalidate>
+        <label for="coupon-input" class="sr-only">Código de descuento</label>
+        <svg class="coupon__icon"><use href="#i-tag"/></svg>
+        <input id="coupon-input" type="text" placeholder="Código de descuento" autocomplete="off" spellcheck="false">
+        <button type="submit" class="btn btn--dark btn--sm">Aplicar</button>
+      </form>
+      <p class="coupon__msg" id="coupon-msg" aria-live="polite"></p>
+
+      <dl class="summary">
+        <div><dt>Subtotal</dt><dd id="sum-subtotal">$0.00</dd></div>
+        <div class="summary__discount" id="sum-discount-row" hidden><dt>Descuento <span id="sum-coupon"></span></dt><dd id="sum-discount">−$0.00</dd></div>
+        <div><dt>Envío estimado</dt><dd id="sum-shipping">—</dd></div>
+        <div class="summary__total"><dt>Total</dt><dd id="sum-total">$0.00</dd></div>
+      </dl>
+
+      <button class="btn btn--primary btn--block btn--lg" id="checkout-btn">Proceder al Pago</button>
+      <p class="cart-drawer__note small muted">Confirmas tu pedido por WhatsApp y te enviamos los datos de pago.</p>
+      <button class="link-btn" data-cart-dismiss>Seguir comprando</button>
+    </footer>
+  </aside>
+
+  <!-- Contenedor de notificaciones -->
+  <div class="toast-region" id="toast-region" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- =========================================================
+       SCRIPTS (orden importa: config → datos → utils → lógica → UI → main)
+       ========================================================= -->
+  <script src="js/config.js" defer></script>
+  <script src="js/data/products.js" defer></script>
+  <script src="js/utils.js" defer></script>
+  <script src="js/cart.js" defer></script>
+  <script src="js/theme.js" defer></script>
+  <script src="js/ui/toast.js" defer></script>
+  <script src="js/ui/header.js" defer></script>
+  <script src="js/ui/catalog.js" defer></script>
+  <script src="js/ui/cart-drawer.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>
